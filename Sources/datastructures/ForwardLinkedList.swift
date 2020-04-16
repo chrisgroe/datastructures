@@ -364,7 +364,7 @@ extension ForwardLinkedList: CustomStringConvertible where Element: CustomString
 // MARK: - CustomStringConvertible Protocol
 extension ForwardLinkedList : RangeReplaceableCollection {
     public func removeFirst() -> Element {
-        assert(count != 0)
+        //assert(count != 0)
         let oldHead = head
         head=head?.next
         endIndex -= 1
