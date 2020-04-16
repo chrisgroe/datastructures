@@ -1,3 +1,3 @@
 # datastructures
 
-A description of this package.
+Common used datastructures.
