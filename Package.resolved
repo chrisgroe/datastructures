@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "SwiftPriorityQueue",
-        "repositoryURL": "git@github.com:davecom/SwiftPriorityQueue.git",
+        "repositoryURL": "https://github.com/davecom/SwiftPriorityQueue.git",
         "state": {
           "branch": null,
           "revision": "9e132c74cb337542ef05e99e0c2dbf345b6527a3",
