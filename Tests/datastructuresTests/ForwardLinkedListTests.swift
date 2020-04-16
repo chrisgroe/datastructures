@@ -456,10 +456,8 @@ class ForwardLinkedListTests: XCTestCase {
         let ll2 = ForwardLinkedList<Int>(1,2,3,4,5)
         XCTAssertFalse(ll1 == ll2)
     }
-    
-    // MARK:FDFDFD
-    
-    
+
+    // MARK: All tests
     
     static var allTests = [
         ("test_Init_withSequence_shouldContainCorrectElements", test_Init_withSequence_shouldContainCorrectElements),
