@@ -16,7 +16,7 @@ public struct StackFLinkedList<T> : Stack {
     fileprivate var container = ContainerType()
     
     /// Initializes an empty stack
-    init()
+    public init()
     {
     }
     
@@ -24,7 +24,7 @@ public struct StackFLinkedList<T> : Stack {
     /// Initializes the stack with a sequence
     ///
     /// Element order is [bottom, ..., top], as if one were to iterate through the sequence in reverse.
-    init<S>( _ s: S) where Element == S.Element, S : Sequence
+    public init<S>( _ s: S) where Element == S.Element, S : Sequence
     {
         
         for i in s {
