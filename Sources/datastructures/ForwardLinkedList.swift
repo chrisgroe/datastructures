@@ -21,6 +21,12 @@ public class ForwardLinkedList<T>
         }
     }
     
+    public var count: Int {
+        get {
+            return endIndex - startIndex
+        }
+    }
+    
     private var head : Node?
     
     /// The position of the first element in a nonempty array.
@@ -364,7 +370,8 @@ extension ForwardLinkedList: CustomStringConvertible where Element: CustomString
 // MARK: - CustomStringConvertible Protocol
 extension ForwardLinkedList : RangeReplaceableCollection {
     public func removeFirst() -> Element {
-        //assert(count != 0)
+        assert(count != 0)
+        
         let oldHead = head
         head=head?.next
         endIndex -= 1
