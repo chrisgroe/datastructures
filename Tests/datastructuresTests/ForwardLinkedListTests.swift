@@ -12,17 +12,17 @@ import XCTest
 class ForwardLinkedListTests: XCTestCase {
     
     
-    func test_init_withSequence_shouldContainCorrectElements() {
+    func test_init_withSequence() {
         let ll = ForwardLinkedList<Int>([1,2,3,4])
         XCTAssertEqual(Array<Int>(ll), [1,2,3,4])
     }
     
-    func test_init_withRange_shouldContainIntElements() {
+    func test_init_withRange() {
         let ll = ForwardLinkedList<Int>(1...4)
         XCTAssertEqual(Array<Int>(ll), [1,2,3,4])
     }
     
-    func test_init_withRepeating_shouldContainRepeatingElements() {
+    func test_init_withRepeating() {
         let ll = ForwardLinkedList<Int>(repeating: 123, count: 4)
         XCTAssertEqual(Array<Int>(ll), [123,123,123,123])
     }
@@ -65,7 +65,6 @@ class ForwardLinkedListTests: XCTestCase {
         XCTAssertEqual(ll.last,321)
     }
     
-    
     func test_makeIterator_with0Elements_shouldIteratorNextReturnNil() {
         let ll = ForwardLinkedList<String>()
         let it = ll.makeIterator()
@@ -105,12 +104,12 @@ class ForwardLinkedListTests: XCTestCase {
         XCTAssertNil(value2)
     }
     
-    func test_count_with0Elements_shouldReturn0() {
+    func test_count_with0Elements() {
         let ll = ForwardLinkedList<Int>()
         XCTAssertEqual(ll.count, 0)
     }
     
-    func test_count_with3Elements_shouldReturn3() {
+    func test_count_with3Elements() {
         let ll = ForwardLinkedList(1,2,3)
         XCTAssertEqual(ll.count, 3)
     }
