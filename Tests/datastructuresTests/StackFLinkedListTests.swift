@@ -10,18 +10,18 @@ import Foundation
 import XCTest
 @testable import datastructures
 
-class StackTests: XCTestCase {
+class StackFLinkedListTests: XCTestCase {
 
     
     func testStackFrontWith3Elements() {
 
-        let stack = StackGeneric(10,11,12)
+        let stack = StackFLinkedList(10,11,12)
     
         XCTAssertEqual(stack.front, 12)
         XCTAssertEqual(stack.count, 3)
     }
     
-    func unwindStackAndTest(_ stack: StackGeneric<Int>, _ expected: [Int]) {
+    func unwindStackAndTest(_ stack: StackFLinkedList<Int>, _ expected: [Int]) {
         var actual = [Int]()
         var count = [Int]()
         for i in stack {
@@ -36,7 +36,7 @@ class StackTests: XCTestCase {
     }
     
     func testBasic() {
-        let stack = StackGeneric<Int>()
+        let stack = StackFLinkedList<Int>()
         
         let pushed = Array(0..<100)
         for i in pushed
@@ -49,7 +49,7 @@ class StackTests: XCTestCase {
     
     func testInitWithSequence() {
         let pushed = Array(0..<100)
-        let stack = StackGeneric<Int>(pushed)
+        let stack = StackFLinkedList<Int>(pushed)
 
         unwindStackAndTest(stack, pushed.reversed())
     }
