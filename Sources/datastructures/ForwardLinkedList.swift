@@ -4,6 +4,8 @@ import Foundation
 ///
 /// This class can be used like an Array. It implements all major protocols an Array implements.
 /// For more information, see [Linked List - Wikipedia](https://en.wikipedia.org/wiki/Linked_list)
+///
+/// - Note: This implemtation of the linked list is a reference type. Therefore value type semanitcs will not hold.
 public class ForwardLinkedList<T>
 {
     public typealias Element = T
