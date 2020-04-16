@@ -9,8 +9,8 @@
 import Foundation
 
 /// A stack (Last-In First-Out) datastructure.
-struct StackFLinkedList<T> : Stack {
-    typealias Element = T
+public struct StackFLinkedList<T> : Stack {
+    public typealias Element = T
     typealias ContainerType = ForwardLinkedList<T>
     
     fileprivate var container = ContainerType()
@@ -47,7 +47,7 @@ struct StackFLinkedList<T> : Stack {
     /// Pushes an element to the top of the stack
     /// - Parameters:
     ///     - element: The element to be pushed.
-    func push(_ element: Element) {
+    public func push(_ element: Element) {
         container.prepend(element)
     }
     
@@ -55,7 +55,7 @@ struct StackFLinkedList<T> : Stack {
     ///
     /// This method reduces the size of the stack by 1.
     /// - Returns:The top element of the stack or nil when the stack is empty.
-    func pop() -> Element? {
+    public func pop() -> Element? {
         if isEmpty {
             return nil
         }
