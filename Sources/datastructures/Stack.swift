@@ -9,25 +9,23 @@
 import Foundation
 
 /// A stack (Last-In First-Out) datastructure.
-struct StackGeneric<T> where T : StackContainer {
-    typealias Element = T.Element
-    typealias ContainerType = T
+struct StackGeneric<T>  {
+    typealias Element = T
+    typealias ContainerType = ForwardLinkedList<T>
     
-    fileprivate var container : ContainerType
+    fileprivate var container = ContainerType()
     
     /// Initializes an empty stack
-    init(container : ContainerType = ContainerType())
+    init()
     {
-        self.container = container
     }
     
     
     /// Initializes the stack with a sequence
     ///
     /// Element order is [bottom, ..., top], as if one were to iterate through the sequence in reverse.
-    init<S>(container : ContainerType = ContainerType(), _ s: S) where Element == S.Element, S : Sequence
+    init<S>( _ s: S) where Element == S.Element, S : Sequence
     {
-        self.container = container
         
         for i in s {
             self.container.prepend(i)
@@ -82,7 +80,20 @@ struct StackGeneric<T> where T : StackContainer {
         return container.isEmpty
     }
     
+    
+    
 }
 
-extension ForwardLinkedList : StackContainer { }
-typealias Stack<T> = StackGeneric<ForwardLinkedList<T>>
+
+// MARK: - GeneratorType
+extension StackGeneric: IteratorProtocol {
+
+    mutating public func next() -> Element? { return pop() }
+}
+
+// MARK: - SequenceType
+extension StackGeneric: Sequence {
+    
+    public typealias Iterator = StackGeneric
+    public func makeIterator() -> Iterator { return self }
+}

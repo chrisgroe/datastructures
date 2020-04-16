@@ -60,11 +60,5 @@ class PriorityQueuePerformanceTests: XCTestCase {
             }
         }
     }
-    
-    static var allTests = [
-        ("testBuildPerformance", testBuildPerformance),
-        ("testPopPerformance", testPopPerformance),
-        ("testPushPerformance", testPushPerformance),
-        ("testRemovePerformance", testRemovePerformance)
-    ]
+
 }
