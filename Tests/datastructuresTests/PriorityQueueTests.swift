@@ -36,7 +36,7 @@ import Foundation
     }
 #endif
 
-class SwiftPriorityQueueTests: XCTestCase {
+class PriorityQueueTests: XCTestCase {
     
     func testCustomOrder() {
         let priorities = [0: 5000, 1: 4000, 2: 3000, 3: 2000, 4: 1000, 5: 0]

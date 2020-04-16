@@ -1,6 +1,6 @@
 //
-//  SwiftPriorityQueuePerformanceTests.swift
-//  SwiftPriorityQueue
+//  PriorityQueuePerformanceTests.swift
+//  PriorityQueue
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to deal
@@ -23,10 +23,10 @@
 import XCTest
 @testable import datastructures
 
-class SwiftPriorityQueuePerformanceTests: XCTestCase {
+class PriorityQueuePerformanceTests: XCTestCase {
     
     func testBuildPerformance() {
-        let input: [Int] = Array((0 ..< 100000))
+        let input: [Int] = Array((0 ..< 10000))
         measure {
             let _: PriorityQueue<Int> = PriorityQueue(ascending: true, startingValues: input)
         }
@@ -36,7 +36,7 @@ class SwiftPriorityQueuePerformanceTests: XCTestCase {
         let original = PriorityQueue(ascending: true, startingValues: Array(0 ..< 100000))
         measure {
             var pq = original
-            for _ in 0 ..< 100000 {
+            for _ in 0 ..< 10000 {
                 let _ = pq.pop()
             }
         }
@@ -44,7 +44,7 @@ class SwiftPriorityQueuePerformanceTests: XCTestCase {
     
     func testPushPerformance() {
         measure {
-            for i in 0 ..< 100000 {
+            for i in 0 ..< 10000 {
                 var pq = PriorityQueue<Int>(ascending: true, startingValues: [])
                 pq.push(i)
             }
