@@ -89,10 +89,6 @@ class StackTests: XCTestCase {
         XCTAssertEqual(mock.prependList, [10,11])
     }
     
-
-
-    
-    
     func test_pop_with3ElementsAnd4Calls_shouldReturnElementsInCorrectOrderAndNilAfterThat() {
         let mock = MockStackContainer()
         mock.removeFirstList = [10,11,12]

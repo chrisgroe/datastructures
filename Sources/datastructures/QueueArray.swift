@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+ 
 struct QueueArray<T> : Queue {
     typealias Element = T
     

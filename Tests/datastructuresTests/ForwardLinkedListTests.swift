@@ -427,8 +427,6 @@ class ForwardLinkedListTests: XCTestCase {
         XCTAssertEqual(Array<Int>(ll), [2,1,0])
     }
     
-    
-    
     func test_reverse_withListContaining6Elements_shouldReturnReversedList() {
         let ll = ForwardLinkedList(1, 1, 2, 3, 5, 8)
         
