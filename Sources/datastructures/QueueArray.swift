@@ -13,6 +13,9 @@ public struct QueueArray<T> : Queue {
     
     var queue = [Element]()
     
+    public init() {
+    }
+    
     public mutating func push(_ element: Element) {
         queue.append(element)
     }
