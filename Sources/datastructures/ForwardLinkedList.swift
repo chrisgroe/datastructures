@@ -30,7 +30,8 @@ public class ForwardLinkedList<T>
     private var head : Node?
     
     /// The position of the first element in a nonempty array.
-    public var startIndex : Index  = 0
+    /// - Note: The startIndex of this collection does never change
+    public let startIndex : Index  = 0
     
     /// The array’s “past the end” position—that is, the position one greater than the last valid subscript argument.
     public var endIndex : Index = 0
