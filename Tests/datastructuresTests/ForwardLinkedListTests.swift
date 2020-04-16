@@ -10,7 +10,7 @@ import XCTest
 @testable import datastructures
 
 class ForwardLinkedListTests: XCTestCase {
-
+    
     
     func test_Init_withSequence_shouldContainCorrectElements() {
         let ll = ForwardLinkedList<Int>([1,2,3,4])
@@ -23,13 +23,13 @@ class ForwardLinkedListTests: XCTestCase {
     }
     
     func test_Init_withRepeating_shouldContainRepeatingElements() {
-           let ll = ForwardLinkedList<Int>(repeating: 123, count: 4)
-           XCTAssertEqual(Array<Int>(ll), [123,123,123,123])
-       }
-
+        let ll = ForwardLinkedList<Int>(repeating: 123, count: 4)
+        XCTAssertEqual(Array<Int>(ll), [123,123,123,123])
+    }
+    
     func test_first_with0Elements_shouldBeNil() {
         let ll = ForwardLinkedList<String>()
-
+        
         XCTAssertNil(ll.first)
     }
     
@@ -76,7 +76,7 @@ class ForwardLinkedListTests: XCTestCase {
         let value1 = it.next()
         XCTAssertNil(value1)
     }
-
+    
     func test_makeIterator_with1Elements_shouldIteratorNextReturn1Element() {
         let ll = ForwardLinkedList<String>()
         ll.append("a")
@@ -228,7 +228,7 @@ class ForwardLinkedListTests: XCTestCase {
         XCTAssertEqual(ll.count,10)
         XCTAssertEqual(Array<Int>(ll), Array<Int>(1...10))
     }
-       
+    
     func test_plus_withLinkedListAndSequence_shouldReturnLinkedList() {
         let ll1 = ForwardLinkedList<Int>(1...5)
         let ll2 = [6,7,8,9,10]
@@ -238,17 +238,17 @@ class ForwardLinkedListTests: XCTestCase {
         XCTAssertEqual(ll.count,10)
         XCTAssertEqual(Array<Int>(ll), Array<Int>(1...10))
     }
-
+    
     
     func test_prepend_withEmptyListAnd3TimesPrepend_shouldContain3ElementsInCorrectOrder() {
-         let ll = ForwardLinkedList<Int>()
-         ll.prepend(10)
-         ll.prepend(20)
-         ll.prepend(30)
-
-         XCTAssertEqual(Array<Int>(ll), [30,20,10])
-     }
-
+        let ll = ForwardLinkedList<Int>()
+        ll.prepend(10)
+        ll.prepend(20)
+        ll.prepend(30)
+        
+        XCTAssertEqual(Array<Int>(ll), [30,20,10])
+    }
+    
     // MARK: Tests CustomStringConvertible
     
     func test_description_withEmptyList_shouldReturnEmptyBrackets() {
@@ -261,7 +261,7 @@ class ForwardLinkedListTests: XCTestCase {
         XCTAssertEqual(ll.description, "[0]")
     }
     func test_description_with2ElementInList_shouldReturnBracketsContainingElement() {
-
+        
         let ll = ForwardLinkedList<Int>([0,1])
         XCTAssertEqual(ll.description, "[0, 1]")
     }
@@ -269,7 +269,7 @@ class ForwardLinkedListTests: XCTestCase {
     // MARK: Tests RemoveFirst
     func test_removeFirst_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty() {
         let ll = ForwardLinkedList<Int>(1,2,3)
-
+        
         XCTAssertEqual(ll.removeFirst(), 1)
         XCTAssertEqual(ll.removeFirst(), 2)
         XCTAssertEqual(ll.removeFirst(), 3)
@@ -282,13 +282,13 @@ class ForwardLinkedListTests: XCTestCase {
         ll.removeFirst(3)
         XCTAssertEqual(ll.count, 0)
         XCTAssertEqual(Array<Int>(ll), [])
-
+        
     }
     
     // MARK: Tests RemoveLast
     func test_removeLast_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty() {
         let ll = ForwardLinkedList<Int>([1,2,3])
-
+        
         XCTAssertEqual(ll.removeLast(), 3)
         XCTAssertEqual(ll.removeLast(), 2)
         XCTAssertEqual(ll.removeLast(), 1)
@@ -298,7 +298,7 @@ class ForwardLinkedListTests: XCTestCase {
     
     func test_removeLast_with3ElementsInListAnd3Removals_shouldListEmpty() {
         let ll = ForwardLinkedList<Int>([1,2,3])
-
+        
         ll.removeLast(3)
         XCTAssertEqual(ll.count, 0)
         XCTAssertEqual(Array<Int>(ll), [])
@@ -306,7 +306,7 @@ class ForwardLinkedListTests: XCTestCase {
     
     func test_removeLast_with3ElementsInListAnd2Removals_shouldListWith1Element() {
         let ll = ForwardLinkedList(1,2,3)
-
+        
         ll.removeLast(2)
         XCTAssertEqual(ll.count, 1)
         XCTAssertEqual(Array<Int>(ll), [1])
@@ -314,10 +314,10 @@ class ForwardLinkedListTests: XCTestCase {
     
     
     // MARK: Tests RemoveSubrange
-
+    
     func test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtBegin_shouldListWith2ElementsWithCorrectContent()  {
         var ll = ForwardLinkedList(1,2,3)
-
+        
         ll.removeSubrange(0...0)
         XCTAssertEqual(ll.count, 2)
         XCTAssertEqual(Array<Int>(ll), [2,3])
@@ -325,7 +325,7 @@ class ForwardLinkedListTests: XCTestCase {
     
     func test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtMid_shouldListWith2ElementsWithCorrectContent() {
         var ll = ForwardLinkedList(1,2,3)
-
+        
         ll.removeSubrange(1...1)
         XCTAssertEqual(ll.count, 2)
         XCTAssertEqual(Array<Int>(ll), [1,3])
@@ -333,7 +333,7 @@ class ForwardLinkedListTests: XCTestCase {
     
     func test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtEnd_shouldListWith2ElementsWithCorrectContent() {
         var ll = ForwardLinkedList(1,2,3)
-
+        
         ll.removeSubrange(2...2)
         XCTAssertEqual(ll.count, 2)
         XCTAssertEqual(Array<Int>(ll), [1,2])
@@ -341,7 +341,7 @@ class ForwardLinkedListTests: XCTestCase {
     
     func test_removeSubrange_with3ElementsInListAndRemoveTailing2Elements_shouldListWith1ElementsWithCorrectContent() {
         var ll = ForwardLinkedList<Int>([1,2,3])
-
+        
         ll.removeSubrange(1...2)
         XCTAssertEqual(ll.count, 1)
         XCTAssertEqual(Array<Int>(ll), [1])
@@ -349,7 +349,7 @@ class ForwardLinkedListTests: XCTestCase {
     
     func test_removeSubrange_with3ElementsInListAndRemoveAllElements_shouldEmptyList() {
         var ll = ForwardLinkedList<Int>([1,2,3])
-
+        
         ll.removeSubrange(0...2)
         XCTAssertEqual(ll.count, 0)
         XCTAssertEqual(Array<Int>(ll), [])
@@ -357,17 +357,17 @@ class ForwardLinkedListTests: XCTestCase {
     
     func test_removeSubrange_with3ElementsInListAndRemoveLeading2Elements_shouldListWith1ElementsWithCorrectContent() {
         var ll = ForwardLinkedList<Int>([1,2,3])
-
+        
         ll.removeSubrange(0...1)
         XCTAssertEqual(ll.count, 1)
         XCTAssertEqual(Array<Int>(ll), [3])
     }
     
-
+    
     
     func test_removeSubrange_with4ElementsInListAndRemove2MidElements_shouldListWith2ElementsWithCorrectContent() {
         var ll = ForwardLinkedList(1,2,3,4)
-
+        
         ll.removeSubrange(1...2)
         XCTAssertEqual(ll.count, 2)
         XCTAssertEqual(Array<Int>(ll), [1,4])
@@ -375,7 +375,7 @@ class ForwardLinkedListTests: XCTestCase {
     
     func test_removeSubrange_with1ElementsInListAndRemove1Element_shouldEmptyList() {
         var ll = ForwardLinkedList<Int>([1])
-
+        
         ll.removeSubrange(0...0)
         XCTAssertEqual(ll.count, 0)
         XCTAssertEqual(Array<Int>(ll), [])
@@ -383,12 +383,12 @@ class ForwardLinkedListTests: XCTestCase {
     
     func test_removeSubrange_with2ElementsInListAndRemove2Elements_shouldEmptyList() {
         var ll = ForwardLinkedList(1, 2)
-
+        
         ll.removeSubrange(0...1)
         XCTAssertEqual(ll.count, 0)
         XCTAssertEqual(Array<Int>(ll), [])
     }
-
+    
     // MARK: Reverse
     
     func test_reverse_withEmptyList_shouldEmptyList() {
@@ -408,7 +408,7 @@ class ForwardLinkedListTests: XCTestCase {
         XCTAssertEqual(ll.count, 1)
         XCTAssertEqual(Array<Int>(ll), [123])
     }
-
+    
     func test_reverse_withListContaining2Elements_shouldReturnReversedList() {
         let ll = ForwardLinkedList(123,321)
         
@@ -419,14 +419,14 @@ class ForwardLinkedListTests: XCTestCase {
     }
     
     func test_reverse_withListContaining3Elements_shouldReturnReversedList() {
-          let ll = ForwardLinkedList(0,1,2)
-          
-          ll.reverse()
-          
-          XCTAssertEqual(ll.count, 3)
-          XCTAssertEqual(Array<Int>(ll), [2,1,0])
-      }
-      
+        let ll = ForwardLinkedList(0,1,2)
+        
+        ll.reverse()
+        
+        XCTAssertEqual(ll.count, 3)
+        XCTAssertEqual(Array<Int>(ll), [2,1,0])
+    }
+    
     
     
     func test_reverse_withListContaining6Elements_shouldReturnReversedList() {
@@ -458,65 +458,65 @@ class ForwardLinkedListTests: XCTestCase {
     }
     
     // MARK:FDFDFD
-
-
+    
+    
     
     static var allTests = [
-         ("test_Init_withSequence_shouldContainCorrectElements", test_Init_withSequence_shouldContainCorrectElements),
-         ("test_Init_withRange_shouldContainIntElements", test_Init_withRange_shouldContainIntElements),
-         ("test_Init_withRepeating_shouldContainRepeatingElements", test_Init_withRepeating_shouldContainRepeatingElements),
-         ("test_first_with0Elements_shouldBeNil", test_first_with0Elements_shouldBeNil),
-         ("test_last_with0Elements_shouldBeNil", test_last_with0Elements_shouldBeNil),
-         ("test_first_with1Element_shouldBeContainingElement", test_first_with1Element_shouldBeContainingElement),
-         ("test_last_with1Element_shouldBeContainingElement", test_last_with1Element_shouldBeContainingElement),
-         ("test_first_with2Elements_shouldBeFirstElement", test_first_with2Elements_shouldBeFirstElement),
-         ("test_last_with2Elements_shouldBeLastElement", test_last_with2Elements_shouldBeLastElement),
-         ("test_makeIterator_with0Elements_shouldIteratorNextReturnNil", test_makeIterator_with0Elements_shouldIteratorNextReturnNil),
-         ("test_makeIterator_with1Elements_shouldIteratorNextReturn1Element", test_makeIterator_with1Elements_shouldIteratorNextReturn1Element),
-         ("test_makeIterator_with2Elements_shouldIteratorNextReturn2Elements", test_makeIterator_with2Elements_shouldIteratorNextReturn2Elements),
-         ("test_count_with0Elements_shouldReturn0", test_count_with0Elements_shouldReturn0),
-         ("test_count_with3Elements_shouldReturn3", test_count_with3Elements_shouldReturn3),
-         ("test_firstIndexOf_withResultAtPos2_shouldReturn2", test_firstIndexOf_withResultAtPos2_shouldReturn2),
-         ("test_distance_with4ElementsInLinkedListFrom0To2_shouldReturn2", test_distance_with4ElementsInLinkedListFrom0To2_shouldReturn2),
-         ("test_subscript_with4ElementsOnlyRead_shouldReturnCorrectElement", test_subscript_with4ElementsOnlyRead_shouldReturnCorrectElement),
-         ("test_subscript_with4ElementsSetAndRead_shouldReturnCorrectElement", test_subscript_with4ElementsSetAndRead_shouldReturnCorrectElement),
-         ("test_sorted_with5Elements_shouldReturnSortedCorrectly", test_sorted_with5Elements_shouldReturnSortedCorrectly),
-         ("test_insert_withEmptyLinkedListAtPos0_should1ElementInListAndCorrectContent", test_insert_withEmptyLinkedListAtPos0_should1ElementInListAndCorrectContent),
-         ("test_insert_with1ElementInListAtPos0_should2ElementInListAndCorrectContent", test_insert_with1ElementInListAtPos0_should2ElementInListAndCorrectContent),
-         ("test_insert_with3ElementInListAtPos1_should4ElementInListAndCorrectContent", test_insert_with3ElementInListAtPos1_should4ElementInListAndCorrectContent),
-         ("test_insert_with1ElementInListAtEnd_should2ElementInListAndCorrectContent", test_insert_with1ElementInListAtEnd_should2ElementInListAndCorrectContent),
-         ("test_remove_with5ElementsInListAtPos0_should4ElementsInListAndElementWasRemovedCorrectly", test_remove_with5ElementsInListAtPos0_should4ElementsInListAndElementWasRemovedCorrectly),
-         ("test_remove_with5ElementsInListAtPos2_should4ElementsInListAndElementWasRemovedCorrectly", test_remove_with5ElementsInListAtPos2_should4ElementsInListAndElementWasRemovedCorrectly),
-         ("test_remove_with5ElementsInListAtEnd_should4ElementsInListAndElementWasRemovedCorrectly", test_remove_with5ElementsInListAtEnd_should4ElementsInListAndElementWasRemovedCorrectly),
-         ("test_plus_with2LinkedList_shouldReturnLinkedList", test_plus_with2LinkedList_shouldReturnLinkedList),
-         ("test_plus_withSequenceAndLinkedList_shouldReturnLinkedList", test_plus_withSequenceAndLinkedList_shouldReturnLinkedList),
-         ("test_plus_withLinkedListAndSequence_shouldReturnLinkedList", test_plus_withLinkedListAndSequence_shouldReturnLinkedList),
-         ("test_prepend_withEmptyListAnd3TimesPrepend_shouldContain3ElementsInCorrectOrder", test_prepend_withEmptyListAnd3TimesPrepend_shouldContain3ElementsInCorrectOrder),
-         ("test_description_withEmptyList_shouldReturnEmptyBrackets", test_description_withEmptyList_shouldReturnEmptyBrackets),
-         ("test_description_with1ElementInList_shouldReturnBracketsContainingElement", test_description_with1ElementInList_shouldReturnBracketsContainingElement),
-         ("test_description_with2ElementInList_shouldReturnBracketsContainingElement", test_description_with2ElementInList_shouldReturnBracketsContainingElement),
-         ("test_removeFirst_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty", test_removeFirst_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty),
-         ("test_removeFirst_with3ElementsInListAnd3Removals_shouldListEmpty", test_removeFirst_with3ElementsInListAnd3Removals_shouldListEmpty),
-         ("test_removeLast_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty", test_removeLast_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty),
-         ("test_removeLast_with3ElementsInListAnd3Removals_shouldListEmpty", test_removeLast_with3ElementsInListAnd3Removals_shouldListEmpty),
-         ("test_removeLast_with3ElementsInListAnd2Removals_shouldListWith1Element", test_removeLast_with3ElementsInListAnd2Removals_shouldListWith1Element),
-         ("test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtBegin_shouldListWith2ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtBegin_shouldListWith2ElementsWithCorrectContent),
-         ("test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtMid_shouldListWith2ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtMid_shouldListWith2ElementsWithCorrectContent),
-         ("test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtEnd_shouldListWith2ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtEnd_shouldListWith2ElementsWithCorrectContent),
-         ("test_removeSubrange_with3ElementsInListAndRemoveTailing2Elements_shouldListWith1ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveTailing2Elements_shouldListWith1ElementsWithCorrectContent),
-         ("test_removeSubrange_with3ElementsInListAndRemoveAllElements_shouldEmptyList", test_removeSubrange_with3ElementsInListAndRemoveAllElements_shouldEmptyList),
-         ("test_removeSubrange_with3ElementsInListAndRemoveLeading2Elements_shouldListWith1ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveLeading2Elements_shouldListWith1ElementsWithCorrectContent),
-         ("test_removeSubrange_with4ElementsInListAndRemove2MidElements_shouldListWith2ElementsWithCorrectContent", test_removeSubrange_with4ElementsInListAndRemove2MidElements_shouldListWith2ElementsWithCorrectContent),
-         ("test_removeSubrange_with1ElementsInListAndRemove1Element_shouldEmptyList", test_removeSubrange_with1ElementsInListAndRemove1Element_shouldEmptyList),
-         ("test_removeSubrange_with2ElementsInListAndRemove2Elements_shouldEmptyList", test_removeSubrange_with2ElementsInListAndRemove2Elements_shouldEmptyList),
-         ("test_reverse_withEmptyList_shouldEmptyList", test_reverse_withEmptyList_shouldEmptyList),
-         ("test_reverse_withListContaining1Element_shouldReturnIdenticalList", test_reverse_withListContaining1Element_shouldReturnIdenticalList),
-         ("test_reverse_withListContaining2Elements_shouldReturnReversedList", test_reverse_withListContaining2Elements_shouldReturnReversedList),
-         ("test_reverse_withListContaining3Elements_shouldReturnReversedList", test_reverse_withListContaining3Elements_shouldReturnReversedList),
-         ("test_reverse_withListContaining6Elements_shouldReturnReversedList", test_reverse_withListContaining6Elements_shouldReturnReversedList),
-         ("test_equal_with2IdenticalLists_shouldReturnTrue", test_equal_with2IdenticalLists_shouldReturnTrue),
-         ("test_equal_with2DifferingLists_shouldReturnFalse", test_equal_with2DifferingLists_shouldReturnFalse),
-         ("test_equal_withListsWithDifferingLength_shouldReturnFalse", test_equal_withListsWithDifferingLength_shouldReturnFalse)
-     ]
+        ("test_Init_withSequence_shouldContainCorrectElements", test_Init_withSequence_shouldContainCorrectElements),
+        ("test_Init_withRange_shouldContainIntElements", test_Init_withRange_shouldContainIntElements),
+        ("test_Init_withRepeating_shouldContainRepeatingElements", test_Init_withRepeating_shouldContainRepeatingElements),
+        ("test_first_with0Elements_shouldBeNil", test_first_with0Elements_shouldBeNil),
+        ("test_last_with0Elements_shouldBeNil", test_last_with0Elements_shouldBeNil),
+        ("test_first_with1Element_shouldBeContainingElement", test_first_with1Element_shouldBeContainingElement),
+        ("test_last_with1Element_shouldBeContainingElement", test_last_with1Element_shouldBeContainingElement),
+        ("test_first_with2Elements_shouldBeFirstElement", test_first_with2Elements_shouldBeFirstElement),
+        ("test_last_with2Elements_shouldBeLastElement", test_last_with2Elements_shouldBeLastElement),
+        ("test_makeIterator_with0Elements_shouldIteratorNextReturnNil", test_makeIterator_with0Elements_shouldIteratorNextReturnNil),
+        ("test_makeIterator_with1Elements_shouldIteratorNextReturn1Element", test_makeIterator_with1Elements_shouldIteratorNextReturn1Element),
+        ("test_makeIterator_with2Elements_shouldIteratorNextReturn2Elements", test_makeIterator_with2Elements_shouldIteratorNextReturn2Elements),
+        ("test_count_with0Elements_shouldReturn0", test_count_with0Elements_shouldReturn0),
+        ("test_count_with3Elements_shouldReturn3", test_count_with3Elements_shouldReturn3),
+        ("test_firstIndexOf_withResultAtPos2_shouldReturn2", test_firstIndexOf_withResultAtPos2_shouldReturn2),
+        ("test_distance_with4ElementsInLinkedListFrom0To2_shouldReturn2", test_distance_with4ElementsInLinkedListFrom0To2_shouldReturn2),
+        ("test_subscript_with4ElementsOnlyRead_shouldReturnCorrectElement", test_subscript_with4ElementsOnlyRead_shouldReturnCorrectElement),
+        ("test_subscript_with4ElementsSetAndRead_shouldReturnCorrectElement", test_subscript_with4ElementsSetAndRead_shouldReturnCorrectElement),
+        ("test_sorted_with5Elements_shouldReturnSortedCorrectly", test_sorted_with5Elements_shouldReturnSortedCorrectly),
+        ("test_insert_withEmptyLinkedListAtPos0_should1ElementInListAndCorrectContent", test_insert_withEmptyLinkedListAtPos0_should1ElementInListAndCorrectContent),
+        ("test_insert_with1ElementInListAtPos0_should2ElementInListAndCorrectContent", test_insert_with1ElementInListAtPos0_should2ElementInListAndCorrectContent),
+        ("test_insert_with3ElementInListAtPos1_should4ElementInListAndCorrectContent", test_insert_with3ElementInListAtPos1_should4ElementInListAndCorrectContent),
+        ("test_insert_with1ElementInListAtEnd_should2ElementInListAndCorrectContent", test_insert_with1ElementInListAtEnd_should2ElementInListAndCorrectContent),
+        ("test_remove_with5ElementsInListAtPos0_should4ElementsInListAndElementWasRemovedCorrectly", test_remove_with5ElementsInListAtPos0_should4ElementsInListAndElementWasRemovedCorrectly),
+        ("test_remove_with5ElementsInListAtPos2_should4ElementsInListAndElementWasRemovedCorrectly", test_remove_with5ElementsInListAtPos2_should4ElementsInListAndElementWasRemovedCorrectly),
+        ("test_remove_with5ElementsInListAtEnd_should4ElementsInListAndElementWasRemovedCorrectly", test_remove_with5ElementsInListAtEnd_should4ElementsInListAndElementWasRemovedCorrectly),
+        ("test_plus_with2LinkedList_shouldReturnLinkedList", test_plus_with2LinkedList_shouldReturnLinkedList),
+        ("test_plus_withSequenceAndLinkedList_shouldReturnLinkedList", test_plus_withSequenceAndLinkedList_shouldReturnLinkedList),
+        ("test_plus_withLinkedListAndSequence_shouldReturnLinkedList", test_plus_withLinkedListAndSequence_shouldReturnLinkedList),
+        ("test_prepend_withEmptyListAnd3TimesPrepend_shouldContain3ElementsInCorrectOrder", test_prepend_withEmptyListAnd3TimesPrepend_shouldContain3ElementsInCorrectOrder),
+        ("test_description_withEmptyList_shouldReturnEmptyBrackets", test_description_withEmptyList_shouldReturnEmptyBrackets),
+        ("test_description_with1ElementInList_shouldReturnBracketsContainingElement", test_description_with1ElementInList_shouldReturnBracketsContainingElement),
+        ("test_description_with2ElementInList_shouldReturnBracketsContainingElement", test_description_with2ElementInList_shouldReturnBracketsContainingElement),
+        ("test_removeFirst_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty", test_removeFirst_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty),
+        ("test_removeFirst_with3ElementsInListAnd3Removals_shouldListEmpty", test_removeFirst_with3ElementsInListAnd3Removals_shouldListEmpty),
+        ("test_removeLast_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty", test_removeLast_with3ElementsInListAnd3DistinctRemovals_shouldListEmpty),
+        ("test_removeLast_with3ElementsInListAnd3Removals_shouldListEmpty", test_removeLast_with3ElementsInListAnd3Removals_shouldListEmpty),
+        ("test_removeLast_with3ElementsInListAnd2Removals_shouldListWith1Element", test_removeLast_with3ElementsInListAnd2Removals_shouldListWith1Element),
+        ("test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtBegin_shouldListWith2ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtBegin_shouldListWith2ElementsWithCorrectContent),
+        ("test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtMid_shouldListWith2ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtMid_shouldListWith2ElementsWithCorrectContent),
+        ("test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtEnd_shouldListWith2ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveSingleElementAtEnd_shouldListWith2ElementsWithCorrectContent),
+        ("test_removeSubrange_with3ElementsInListAndRemoveTailing2Elements_shouldListWith1ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveTailing2Elements_shouldListWith1ElementsWithCorrectContent),
+        ("test_removeSubrange_with3ElementsInListAndRemoveAllElements_shouldEmptyList", test_removeSubrange_with3ElementsInListAndRemoveAllElements_shouldEmptyList),
+        ("test_removeSubrange_with3ElementsInListAndRemoveLeading2Elements_shouldListWith1ElementsWithCorrectContent", test_removeSubrange_with3ElementsInListAndRemoveLeading2Elements_shouldListWith1ElementsWithCorrectContent),
+        ("test_removeSubrange_with4ElementsInListAndRemove2MidElements_shouldListWith2ElementsWithCorrectContent", test_removeSubrange_with4ElementsInListAndRemove2MidElements_shouldListWith2ElementsWithCorrectContent),
+        ("test_removeSubrange_with1ElementsInListAndRemove1Element_shouldEmptyList", test_removeSubrange_with1ElementsInListAndRemove1Element_shouldEmptyList),
+        ("test_removeSubrange_with2ElementsInListAndRemove2Elements_shouldEmptyList", test_removeSubrange_with2ElementsInListAndRemove2Elements_shouldEmptyList),
+        ("test_reverse_withEmptyList_shouldEmptyList", test_reverse_withEmptyList_shouldEmptyList),
+        ("test_reverse_withListContaining1Element_shouldReturnIdenticalList", test_reverse_withListContaining1Element_shouldReturnIdenticalList),
+        ("test_reverse_withListContaining2Elements_shouldReturnReversedList", test_reverse_withListContaining2Elements_shouldReturnReversedList),
+        ("test_reverse_withListContaining3Elements_shouldReturnReversedList", test_reverse_withListContaining3Elements_shouldReturnReversedList),
+        ("test_reverse_withListContaining6Elements_shouldReturnReversedList", test_reverse_withListContaining6Elements_shouldReturnReversedList),
+        ("test_equal_with2IdenticalLists_shouldReturnTrue", test_equal_with2IdenticalLists_shouldReturnTrue),
+        ("test_equal_with2DifferingLists_shouldReturnFalse", test_equal_with2DifferingLists_shouldReturnFalse),
+        ("test_equal_withListsWithDifferingLength_shouldReturnFalse", test_equal_withListsWithDifferingLength_shouldReturnFalse)
+    ]
     
 }
