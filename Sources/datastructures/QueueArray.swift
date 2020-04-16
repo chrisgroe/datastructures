@@ -8,16 +8,16 @@
 
 import Foundation
  
-struct QueueArray<T> : Queue {
-    typealias Element = T
+public struct QueueArray<T> : Queue {
+    public typealias Element = T
     
     var queue = [Element]()
     
-    mutating func push(_ element: Element) {
+    public mutating func push(_ element: Element) {
         queue.append(element)
     }
     
-    mutating func pop() -> Element? {
+    public mutating func pop() -> Element? {
         if queue.isEmpty {
             return nil
         }

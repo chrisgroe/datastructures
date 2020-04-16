@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol StackContainer {
+public protocol StackContainer {
     
     associatedtype Element
     
