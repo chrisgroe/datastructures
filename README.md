@@ -1,3 +1,5 @@
+![Swift](https://github.com/chrisgroe/datastructures/workflows/Swift/badge.svg)
+
 # datastructures
 
 Common used datastructures.
