@@ -15,7 +15,7 @@ class StackFLinkedListTests: XCTestCase {
     
     func testStackFrontWith3Elements() {
 
-        let stack = StackFLinkedList(10,11,12)
+        let stack = StackFLinkedList<Int>(10,11,12)
     
         XCTAssertEqual(stack.front, 12)
         XCTAssertEqual(stack.count, 3)

@@ -48,10 +48,10 @@ public struct PriorityQueue<T: Comparable> {
 
         // Based on "Heap construction" from Sedgewick p 323
         heap = startingValues
-        var i = heap.count/2 - 1
-        while i >= 0 {
-            sink(i)
-            i -= 1
+        var index = heap.count/2 - 1
+        while index >= 0 {
+            sink(index)
+            index -= 1
         }
     }
 
@@ -83,7 +83,6 @@ public struct PriorityQueue<T: Comparable> {
         return heap.removeLast()
     }
 
-
     /// Removes the first occurence of a particular item. Finds it by value comparison using ==. O(n)
     /// Silently exits if no occurrence found.
     ///
@@ -106,7 +105,7 @@ public struct PriorityQueue<T: Comparable> {
     public mutating func removeAll(_ item: T) {
         var lastCount = heap.count
         remove(item)
-        while (heap.count < lastCount) {
+        while heap.count < lastCount {
             lastCount = heap.count
             remove(item)
         }
@@ -126,16 +125,16 @@ public struct PriorityQueue<T: Comparable> {
 
     // Based on example from Sedgewick p 316
     private mutating func sink(_ index: Int) {
-        var index = index
-        while 2 * index + 1 < heap.count {
+        var iIndex = index
+        while 2 * iIndex + 1 < heap.count {
 
-            var j = 2 * index + 1
+            var jIndex = 2 * iIndex + 1
 
-            if j < (heap.count - 1) && ordered(heap[j], heap[j + 1]) { j += 1 }
-            if !ordered(heap[index], heap[j]) { break }
+            if jIndex < (heap.count - 1) && ordered(heap[jIndex], heap[jIndex + 1]) { jIndex += 1 }
+            if !ordered(heap[iIndex], heap[jIndex]) { break }
 
-            heap.swapAt(index, j)
-            index = j
+            heap.swapAt(iIndex, jIndex)
+            iIndex = jIndex
         }
     }
 
@@ -146,16 +145,16 @@ public struct PriorityQueue<T: Comparable> {
     /// After executing this function, calling `heap.removeLast()` returns the popped element.
     /// - Parameter newCount: The number of elements in heap after the `pop()` operation is complete.
     private mutating func fastPop(newCount: Int) {
-        var index = 0
+        var iIndex = 0
         heap.withUnsafeMutableBufferPointer { bufferPointer in
-            let _heap = bufferPointer.baseAddress! // guaranteed non-nil because count > 0
-            swap(&_heap[0], &_heap[newCount])
-            while 2 * index + 1 < newCount {
-                var j = 2 * index + 1
-                if j < (newCount - 1) && ordered(_heap[j], _heap[j+1]) { j += 1 }
-                if !ordered(_heap[index], _heap[j]) { return }
-                swap(&_heap[index], &_heap[j])
-                index = j
+            let heapPtr = bufferPointer.baseAddress! // guaranteed non-nil because count > 0
+            swap(&heapPtr[0], &heapPtr[newCount])
+            while 2 * iIndex + 1 < newCount {
+                var jIndex = 2 * iIndex + 1
+                if jIndex < (newCount - 1) && ordered(heapPtr[jIndex], heapPtr[jIndex+1]) { jIndex += 1 }
+                if !ordered(heapPtr[iIndex], heapPtr[jIndex]) { return }
+                swap(&heapPtr[iIndex], &heapPtr[jIndex])
+                iIndex = jIndex
             }
         }
     }
@@ -192,10 +191,10 @@ extension PriorityQueue: Collection {
     public var startIndex: Int { return heap.startIndex }
     public var endIndex: Int { return heap.endIndex }
 
-    public subscript(i: Int) -> T { return heap[i] }
+    public subscript(index: Int) -> T { return heap[index] }
 
-    public func index(after i: PriorityQueue.Index) -> PriorityQueue.Index {
-        return heap.index(after: i)
+    public func index(after index: PriorityQueue.Index) -> PriorityQueue.Index {
+        return heap.index(after: index)
     }
 }
 

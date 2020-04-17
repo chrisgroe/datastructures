@@ -11,5 +11,4 @@ public protocol Stack {
     associatedtype Element
     mutating func push(_ element: Element)
     mutating func pop() -> Element?
-    
 }

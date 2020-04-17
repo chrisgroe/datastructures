@@ -9,37 +9,32 @@
 import Foundation
 
 /// A stack (Last-In First-Out) datastructure.
-public struct StackFLinkedList<T> : Stack {
+public struct StackFLinkedList<T>: Stack {
     public typealias Element = T
     typealias ContainerType = ForwardLinkedList<T>
 
     fileprivate var container = ContainerType()
 
     /// Initializes an empty stack
-    public init()
-    {
+    public init() {
     }
 
     /// Initializes the stack with a sequence
     ///
     /// Element order is [bottom, ..., top], as if one were to iterate through the sequence in reverse.
-    public init<S>( _ s: S) where Element == S.Element, S : Sequence
-    {
+    public init<S>( _ sequence: S) where Element == S.Element, S: Sequence {
 
-        for i in s {
-            self.container.prepend(i)
+        for element in sequence {
+            self.container.prepend(element)
         }
     }
 
     /// Initializes the stack with variadic parameters
     ///
     /// Element order is (bottom, ..., top),  as if one were to iterate through the sequence in reverse.
-    init(container : ContainerType = ContainerType(), _ values: Element...) {
-
-        self.container = container
-
-        for i in values {
-            self.container.prepend(i)
+    init( _ values: Element...) {
+        for element in values {
+            self.container.prepend(element)
         }
     }
 
@@ -78,9 +73,7 @@ public struct StackFLinkedList<T> : Stack {
     var isEmpty: Bool {
         return container.isEmpty
     }
-    
 }
-
 
 // MARK: - GeneratorType
 extension StackFLinkedList: IteratorProtocol {

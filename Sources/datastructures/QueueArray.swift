@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct QueueArray<T> : Queue {
+public struct QueueArray<T>: Queue {
     public typealias Element = T
 
     var queue = [Element]()

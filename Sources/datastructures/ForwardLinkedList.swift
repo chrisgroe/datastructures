@@ -9,16 +9,7 @@ import Foundation
 public class ForwardLinkedList<T> {
     public typealias Element = T
     public typealias Index = Int
-
-    fileprivate class Node {
-        var data: Element
-        var next: Node?
-
-        init(data: Element) {
-            self.data = data
-            self.next = nil
-        }
-    }
+    typealias Node = ForwardLinkedListNode<T>
 
     public var count: Int {
         return endIndex - startIndex
@@ -283,7 +274,6 @@ extension ForwardLinkedList: MutableCollection {
     }
 
     public subscript(position: Int) -> Element {
-
         set {
             let node = gotoNode(at: position)
             node?.data = newValue
@@ -296,7 +286,6 @@ extension ForwardLinkedList: MutableCollection {
 
 // MARK: Operators
 extension ForwardLinkedList {
-
     public static func + (lhs: ForwardLinkedList<Element>, rhs: ForwardLinkedList<Element>)
         -> ForwardLinkedList<Element> {
         let newLl = ForwardLinkedList<Element>(lhs) // create new linked list based on lhs
@@ -319,7 +308,6 @@ extension ForwardLinkedList {
             ref = newLl.insertNode(behind: ref, rhsItem) // append elements from rhs
         }
         return newLl
-
     }
 
     public static func + <Other>(lhs: ForwardLinkedList<Element>, rhs: Other )
@@ -338,7 +326,6 @@ extension ForwardLinkedList {
 extension ForwardLinkedList: CustomStringConvertible where Element: CustomStringConvertible {
 
     public var description: String {
-
         var text = "["
         var nodeRef = head
 

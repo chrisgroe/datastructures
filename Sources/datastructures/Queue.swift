@@ -9,7 +9,7 @@
 import Foundation
 
 /// Each queue must conform to this protocol
-public protocol Queue  {
+public protocol Queue {
     associatedtype Element
     mutating func push(_ element: Element)
     mutating func pop() -> Element?
