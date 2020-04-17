@@ -15,13 +15,13 @@ class StackFLinkedListTests: XCTestCase {
     
     func testStackFrontWith3Elements() {
 
-        let stack = StackFLinkedList<Int>(10,11,12)
+        let stack = StackForwardLinkedList<Int>(10,11,12)
     
         XCTAssertEqual(stack.front, 12)
         XCTAssertEqual(stack.count, 3)
     }
     
-    func unwindStackAndTest(_ stack: StackFLinkedList<Int>, _ expected: [Int]) {
+    func unwindStackAndTest(_ stack: StackForwardLinkedList<Int>, _ expected: [Int]) {
         var actual = [Int]()
         var count = [Int]()
         for i in stack {
@@ -36,7 +36,7 @@ class StackFLinkedListTests: XCTestCase {
     }
     
     func testBasic() {
-        let stack = StackFLinkedList<Int>()
+        let stack = StackForwardLinkedList<Int>()
         
         let pushed = Array(0..<100)
         for i in pushed
@@ -49,7 +49,7 @@ class StackFLinkedListTests: XCTestCase {
     
     func testInitWithSequence() {
         let pushed = Array(0..<100)
-        let stack = StackFLinkedList<Int>(pushed)
+        let stack = StackForwardLinkedList<Int>(pushed)
 
         unwindStackAndTest(stack, pushed.reversed())
     }

@@ -9,7 +9,7 @@
 import Foundation
 
 /// A stack (Last-In First-Out) datastructure.
-public struct StackFLinkedList<T>: Stack {
+public struct StackForwardLinkedList<T>: Stack {
     public typealias Element = T
     typealias ContainerType = ForwardLinkedList<T>
 
@@ -76,14 +76,14 @@ public struct StackFLinkedList<T>: Stack {
 }
 
 // MARK: - GeneratorType
-extension StackFLinkedList: IteratorProtocol {
+extension StackForwardLinkedList: IteratorProtocol {
 
     mutating public func next() -> Element? { return pop() }
 }
 
 // MARK: - SequenceType
-extension StackFLinkedList: Sequence {
+extension StackForwardLinkedList: Sequence {
 
-    public typealias Iterator = StackFLinkedList
+    public typealias Iterator = StackForwardLinkedList
     public func makeIterator() -> Iterator { return self }
 }
